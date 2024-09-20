@@ -18,10 +18,10 @@ export default function Home() {
 
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-4xl font-bold text-center mb-10">Blog de Hacking Ético</h1>
+      <h1 className="text-4xl font-bold text-center mb-10 text-white">Blog de Hacking Ético</h1> {/* Título en blanco */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article) => (
-          <div className="bg-white shadow-md rounded-lg overflow-hidden" key={article.id}>
+          <div className="bg-gray-900 shadow-md rounded-lg overflow-hidden" key={article.id}> {/* Fondo oscuro para la tarjeta */}
             {/* Usamos la variable de entorno para la URL del servidor de Strapi */}
             {article.cover && article.cover.url && (
               <img
@@ -31,8 +31,8 @@ export default function Home() {
               />
             )}
             <div className="p-4">
-              <h2 className="text-xl font-bold mb-2">{article.title}</h2>
-              <p className="text-gray-700">{article.description}</p>
+              <h2 className="text-xl font-bold mb-2 text-white">{article.title}</h2> {/* Título en blanco */}
+              <p className="text-gray-400">{article.description}</p> {/* Descripción en gris claro */}
             </div>
           </div>
         ))}
