@@ -1,4 +1,5 @@
 "use client"; // <-- Esto le indica a Next.js que este es un Client Component
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
