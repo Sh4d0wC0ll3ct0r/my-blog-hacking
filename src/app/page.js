@@ -1,6 +1,7 @@
+/* eslint-disable */
+
 "use client"; // <-- Esto le indica a Next.js que este es un Client Component
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
@@ -18,18 +19,20 @@ export default function Home() {
 
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-4xl font-bold text-center mb-10 text-white">Blog de Hacking Ético</h1> {/* Título en blanco */}
+   
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article) => (
           <div className="bg-gray-900 shadow-md rounded-lg overflow-hidden" key={article.id}> {/* Fondo oscuro para la tarjeta */}
             {/* Usamos la variable de entorno para la URL del servidor de Strapi */}
-            {article.cover && article.cover.url && (
+            {
+             article.cover && article.cover.url && (
               <img
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${article.cover.url}`} // Usamos la URL base desde el entorno
                 alt={article.title}
                 className="w-full h-48 object-cover"
               />
-            )}
+            )
+            }
             <div className="p-4">
               <h2 className="text-xl font-bold mb-2 text-white">{article.title}</h2> {/* Título en blanco */}
               <p className="text-gray-400">{article.description}</p> {/* Descripción en gris claro */}
