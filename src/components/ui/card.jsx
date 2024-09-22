@@ -1,50 +1,24 @@
-import * as React from "react"
+import Link from 'next/link';
 
-import { cn } from "@/lib/utils"
+function Card({ post }) {
+  return (
+    <div className="card">
+      {/* Verificamos si existe una URL de imagen antes de mostrarla */}
+      {post.coverUrl && (
+        <img 
+          src={post.coverUrl} // Asegúrate de que `coverUrl` es el campo correcto
+          alt={post.title} 
+          className="card-image"
+        />
+      )}
+      <h2>{post.title}</h2>
+      <p>{post.description}</p>
+      {/* Usamos el slug para redirigir al post */}
+      <Link href={`/blog/${post.slug}`}>
+        Leer más
+      </Link>
+    </div>
+  );
+}
 
-const Card = React.forwardRef(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("rounded-xl border bg-card text-card-foreground shadow", className)}
-    {...props} />
-))
-Card.displayName = "Card"
-
-const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
-    {...props} />
-))
-CardHeader.displayName = "CardHeader"
-
-const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
-    {...props} />
-))
-CardTitle.displayName = "CardTitle"
-
-const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props} />
-))
-CardDescription.displayName = "CardDescription"
-
-const CardContent = React.forwardRef(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
-CardContent.displayName = "CardContent"
-
-const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
-    {...props} />
-))
-CardFooter.displayName = "CardFooter"
-
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export default Card;
